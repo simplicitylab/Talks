@@ -12,8 +12,10 @@ use \NlpTools\Tokenizers\WhitespaceAndPunctuationTokenizer;
 $text = "PHP is a server side scripting language designed for web development
 but also used as a general-purpose programming language.";
 
+// initialize Whitespace and punctuation tokenizer
 $tokenizer = new WhitespaceAndPunctuationTokenizer();
 
+// dump array of tokens
 var_dump($tokenizer->tokenize($text));
 
 
