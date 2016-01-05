@@ -15,6 +15,6 @@ but also used as a general-purpose programming language.";
 // initialize Whitespace and punctuation tokenizer
 $tokenizer = new WhitespaceAndPunctuationTokenizer();
 
-// dump array of tokens
-var_dump($tokenizer->tokenize($text));
+// print array of tokens
+printf("%s\n", implode(" / ", $tokenizer->tokenize($text)));
 ?>

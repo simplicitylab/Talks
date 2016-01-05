@@ -26,5 +26,7 @@ $doc = new TokensDocument($tokenizer->tokenize($text));
 // apply our stopwords
 $doc->applyTransformation($stop);
 
-var_dump($doc->getDocumentData());
+// print filtered tokens
+printf("%s\n", implode(" / ", $doc->getDocumentData()));
+
 ?>
