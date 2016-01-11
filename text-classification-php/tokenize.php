@@ -6,15 +6,14 @@
  */
 include('vendor/autoload.php');
 
-use \NlpTools\Tokenizers\WhitespaceAndPunctuationTokenizer;
+use \NlpTools\Tokenizers\WhitespaceTokenizer;
 
 // text we will be converting into tokens
-$text = "PHP is a server side scripting language designed for web development
-but also used as a general-purpose programming language.";
+$text = "PHP is a server side scripting language.";
 
 // initialize Whitespace and punctuation tokenizer
-$tokenizer = new WhitespaceAndPunctuationTokenizer();
+$tokenizer = new WhitespaceTokenizer();
 
 // print array of tokens
-printf("%s\n", implode(" / ", $tokenizer->tokenize($text)));
+print_r($tokenizer->tokenize($text));
 ?>

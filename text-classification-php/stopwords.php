@@ -6,19 +6,18 @@
  */
 include('vendor/autoload.php');
 
-use \NlpTools\Tokenizers\WhitespaceAndPunctuationTokenizer;
+use \NlpTools\Tokenizers\WhitespaceTokenizer;
 use \NlpTools\Documents\TokensDocument;
 use \NlpTools\Utils\StopWords;
 
 // text we will be converting into tokens
-$text = "PHP is a server side scripting language designed for web development
-but also used as a general-purpose programming language.";
+$text = "PHP is a server side scripting language";
 
 // define a list of stop words
-$stop = new StopWords(array("is", "a", "as", "for", "also", ".", ",", "!","-"));
+$stop = new StopWords(array("is", "a", "as"));
 
-// initialize Whitespace and punctuation tokenizer
-$tokenizer = new WhitespaceAndPunctuationTokenizer();
+// initialize Whitespace tokenizer
+$tokenizer = new WhitespaceTokenizer();
 
 // init token document
 $doc = new TokensDocument($tokenizer->tokenize($text));
@@ -27,6 +26,6 @@ $doc = new TokensDocument($tokenizer->tokenize($text));
 $doc->applyTransformation($stop);
 
 // print filtered tokens
-printf("%s\n", implode(" / ", $doc->getDocumentData()));
+print_r($doc->getDocumentData());
 
 ?>
