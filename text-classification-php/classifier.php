@@ -15,9 +15,10 @@ use NlpTools\Classifiers\MultinomialNBClassifier;
 
 // *************** Training ***************
 $training = array(
-    array('new york','new york is a hell of a town'),
-    array('new york','the statue of liberty'),
-    array('new york','new york is in the united states'),
+    array('usa','new york is a hell of a town'),
+    array('usa','the statue of liberty'),
+    array('usa','new york is in the united states'),
+    array('usa','the white house is in washington'),
     array('uk','london is in the uk'),
     array('uk','the big ben is in london'),
 );
@@ -47,8 +48,11 @@ $bayesModel->train($features, $trainingSet);
 // *************** Classify ***************
 
 $testSet = array(
-    array('new york','i want to see the statue of liberty'),
-    array('uk','i saw the big ben yesterdag'),
+    array('usa','i want to see the statue of liberty'),
+    array('usa','this is a picture of the white house'),
+    array('usa','where in washington'),
+    array('uk','i saw the big ben yesterday'),
+    array('uk','i went to london to visit a friend'),
 );
 
 // init our Naive Bayes Class using the features and our model
@@ -58,7 +62,7 @@ $classifier = new MultinomialNBClassifier($features, $bayesModel);
 foreach ($testSet as $testDocument){
   // predict our sentence
   $prediction = $classifier->classify(
-      array('new york','uk'), // the classes that can be predicted
+      array('usa','uk'), // the classes that can be predicted
       new TokensDocument(
         $tokenizer->tokenize($testDocument[1])
       ) // the sentence
